@@ -1,0 +1,107 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+//enum sex
+//{
+//	MALE,
+//	FEMALE,
+//	SECRET
+//};
+//enum Color
+//{
+//	red,
+//	yellow,
+//	blue
+//};
+//struct Book
+//{
+//	char name[20];
+//	char writer[20];
+//	char press[20];
+//	double price;
+//	int number;
+//};
+struct student
+{
+	char name[20];
+	double height;
+	long schoolnumber;
+};
+int main()
+{
+	/*enum sex s = MALE;
+	printf("%d", SECRET);*/
+	/*printf("%d\n", red);
+	printf("%d\n", yellow);
+	printf("%d\n", blue);
+	if (blue==2)
+	{
+		printf("%d", red);
+	} */
+
+	//字符串
+	/*char arr1[] = "abc";
+	char arr2[] = { 'a','b','c',};*/
+	/*printf("%s\n", arr1);*/
+	/*printf("%s\n", arr2);*/
+	
+	/*printf("%d\n", 'A');
+	printf("%d\n", strlen(arr1));
+	printf("%d\n", strlen(arr2));*/
+
+	/*extern int Add(int, int);
+	int a = 10;
+	int b = 20;
+	int sum = 0;
+	sum = Add(a, b);*/
+
+	/*int a = 0;
+	int* p = &a;
+	printf("%p\n", &a);
+	*p = 20;
+	printf("%d\n", a);
+
+	printf("%d\n", sizeof(p));
+	printf("%d\n", sizeof(int*));*/
+	/*printf("sum =%d\n", sum);*/
+
+
+	
+
+	/*struct Book b1 = { "C语言程序设计","程邦正","光明出版社",66.65,723223489 };
+
+	printf("书名：%s\n作者：%s\n出版社：%s\n价格：%lf 元\n编号：%d\n", b1.name, b1.writer, b1.press, b1.price, b1.number);*/
+
+	/*8nj8
+	//printf("姓名：%s\n身高：%lf m\n学号：%d\n", cbz.name, cbz.height, cbz.schoolnumber);
+	/*struct student* ps = &cbz;
+	printf("姓名：%s\n", ps->name);
+	printf("身高：%lf m\n", ps->height);
+	printf("学号：%d\n", ps->schoolnumber);*/
+	int age ;
+	printf("请输入您的年龄 \n");
+	scanf( "%d", &age);
+	/*if (age<18)
+	{
+		printf("未成年\n");
+	}
+	else if (age>=18&&age<28)
+	{
+		printf("青年\n");
+	}
+	else if (age>=28&&age<38)
+	{
+		printf("壮年\n");
+	}
+	else
+	{
+		printf("中年及老年\n");
+	}*/
+	
+
+
+
+
+	system("pause");
+	return 0;
+}
