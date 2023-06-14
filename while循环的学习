@@ -1,0 +1,21 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main()
+{
+	//while循环的学习。
+	//getchar的功能是接收从键盘上输出的符号，putchar是把某个变量的符号输出。
+	int ch = 0;
+	while ((ch = getchar())!=EOF)//键盘输入一个键位，只要不是Ctrl+z，就进入循环。
+	{
+		if (ch<'0'||ch>'9')//如果输入的键位是小于0大于9的阿斯克码表上的值就会continue。
+		{
+			continue;
+		}
+		putchar(ch);//如果输出的键位是大于0小于9的数字就会被putchar输出。		
+	}
+	//EOF--是文件结束标志，代表的值是-1.
+	system("pause");
+	return 0;
+}
