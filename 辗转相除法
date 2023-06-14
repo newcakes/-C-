@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<Windows.h>
+#define N 10//用宏定义来定义N，方便来修改参数N。
+int main()
+{
+	//辗转相除法
+	int m = 0;//建立一个变量m。
+	int n = 0;//建立一个变量n。
+	int r = 0;//建立一个变量r。
+	printf("请输入两个任意整数\n");
+	scanf("%d%d", &m, &n);//接收两个输入的整数。
+	if (m<n)//该单分支是确保m恒大于n。
+	{
+		int temp = n;
+		n = m;
+		m = temp;
+	}
+	while (r=m%n)//如果m%n等于0，循环结束，如果判断式的返回值不为0，循环继续进行。
+	{//辗转相除的精髓。
+		m = n;
+		n = r;
+	}
+	printf("两个数的最大公约数使%d\n", n);//最后输出。
+	system("pause");
+	return 0;
+}
