@@ -1,0 +1,25 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main()
+{
+	//for循环的学习。
+	int i = 0;//初始化i。
+	for ( i = 1; i < 11; i++)//表达式一：初始化和赋值，表达式二：循环结束的条件，表达式三：调整。
+	{
+		printf("%d ", i);//循环主体,打印1——10的数字。
+	}
+
+	//do…while循环的学习
+	int i = 0;//初始化i。
+	do//先做一次循环。
+	{
+		printf("%d ", i);//打印i的值。
+		i++;//改变循环条件。
+	} while (i<10);//循环的结束条件。
+	//do…while循环至少循环一次。
+	//while循环和for循环都可以循环零次。
+	system("pause");
+	return 0;
+}
