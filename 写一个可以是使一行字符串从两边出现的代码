@@ -1,0 +1,26 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<Windows.h>
+#define N 10//用宏定义来定义N，方便来修改参数N。
+int main()
+{
+	//写一个可以是使一行字符串从两边出现的代码
+	char arr[] = "welcome to home!!!";//首先定义一个提前要输出的字符串。
+	char arr1[] = "                  ";//再定义一个长度相等的空白字符串。
+	int left = 0;//定义一个字符串的第一个编号。
+	int right = strlen(arr) - 1;//通过计算字符串的长度，来定义一个字符串的最后一个编号。
+	while (left<=right)//由于一些操作需要循环来实现，写个while循环来解决，也可以用for循环来写。
+	{
+		system("cls");//这是一个清除屏幕的函数，需要包含头文件<stdlib.h>；
+		arr1[left] = arr[left];//再将arr中的首个字符赋值给arr1；
+		arr1[right] = arr[right];//同理，将arr中除'\0'，外的最后一个字符赋值给arr1；
+		printf("%s\n", arr1);//打印arr1；
+		Sleep(100);		//从"sleep"这个单词可以知道这是一个起延迟作用的函数，应用是需要包含<windows.h>的头文件。
+		left++;//再left自加，方便下一次将arr中的第二个字符赋值给arr1；
+		right--;//同理，将right自加，方便将arr中除'\0'外的倒数第二个字符赋值给arr1.
+	}
+	system("pause");
+	return 0;
+}
