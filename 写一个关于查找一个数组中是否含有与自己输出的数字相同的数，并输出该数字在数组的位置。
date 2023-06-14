@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#define N 10//用宏定义来定义N，方便来修改参数N。
+int main()
+{
+	//写一个关于查找一个数组中是否含有与自己输出的数字相同的数，并输出该数字在数组的位置。
+	int R = 0;
+	printf("请输入一个数字\n");
+	scanf("%d", &R);//随意输出一个数字。
+	int arr[] = { 0,2,9,6,54,2,5,4,32,5,2,5,1,32,5,7,4,3,5,6 };//随便创建一个数组。
+	int sz = 0;
+	sz = sizeof(arr) / sizeof(arr[0]);//计算该数组的大小。
+	for (int i = 0; i <sz ; i++)
+	{
+		if (arr[i] == R)
+		{
+			printf("该数组的第%d数是与R相同的数 ", i+1); break;
+		}
+		if (i > (sz - 2) && arr[i] != R)
+		{
+			printf("该数组没有与R相同的数字");
+		}
+	}
+
+	system("pause");
+	return 0;
+}
