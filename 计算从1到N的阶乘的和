@@ -1,0 +1,22 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#define N 6//用宏定义来定义N，方便来修改参数N。
+int main()
+{	
+	//计算输出1的阶乘到N的阶乘的和。
+	int sum2 = 0;//先定义最后的总和
+	for (int i = 1; i <N+1 ; i++)//先写一个外层循环来控制和的个数。
+	{
+		int sum1 = 1;//每次二层循环结束时，sum2都需要从1开始。
+		for (int j = 1; j < i+1; j++)//写一个二层循环，来控制每个和的阶乘大小。
+		{
+			sum1 *= j;//收集每个阶乘的和。
+		}
+		sum2 += sum1;//收集1到N所有阶乘的和。
+	}
+	printf("%d\n", sum2);//最后输出总和sum2.
+	system("pause");
+	return 0;
+}
