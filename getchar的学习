@@ -1,0 +1,40 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main()
+{
+	//用通过输密码的方式了解getchar()的一些用法。
+	char password[20] = { 0 };
+	int ch = 0;
+	int ret = 0;
+	printf("请输入您的密码： ");
+	scanf("%s", password);
+	printf("请确您的密码是否正确：（Y/N）");
+	while ((ch = getchar()) != '\n')//防止出现输入的'\n'被下面的getchar获得。
+	{
+		;
+	}
+	while (1)//写一个死循环。
+	{
+		ret = getchar();
+		while ((ch = getchar()) != '\n')
+		{
+			;
+		}
+		if (ret == 'Y')
+		{
+			printf("确认完成\n"); break;
+		}
+		else if (ret == 'N')
+		{
+			printf("确认失败\n"); break;
+		}
+		else
+		{
+			printf("请重新输入（Y/N）");
+		}
+	}
+	system("pause");
+	return 0;
+}
