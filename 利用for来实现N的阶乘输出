@@ -1,0 +1,17 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#define N 10//用宏定义来定义N，方便来修改参数N。
+int main()
+{
+	int i = 0;//初始化i
+	int sum = 1;//初始化sum。
+	for (i = 1; i < N + 1; i++)
+	{
+		sum *= i;//利用for循环把N的阶乘赋值给sum。
+	}
+	printf("%d\n", sum);//最后打印sum。
+	system("pause");
+	return 0;
+}
