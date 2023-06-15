@@ -1,0 +1,63 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+#include<windows.h>
+void Menu()//建立一个菜单函数。
+{
+	printf("###############################\n");
+	printf("####      1、开始游戏      ####\n");
+	printf("####      0、退出游戏      ####\n");
+}
+void Game()//建立一个游戏函数。
+{
+	system("cls");	//这是一个清屏指令，可以记为clean screen，需要添加<stdlib.h>的库函数。
+	printf("欢迎成功登入游戏！\n");
+	int ret = 0;
+	int guess = 0;	
+	ret = rand()%100+1;//这是把随机数限制在1到100之间。
+	Sleep(1000);//这是一个延迟作用的指令，1000是表示1000毫秒。
+	printf("请输入您猜的数字！\n");	
+	while (1)
+	{
+		scanf("%d", &guess);//这是获取玩家猜想的数字，需要写在循环里面。
+		if (guess>ret)
+		{
+			printf("您猜的数字大了！\n");//这是一个提示作用的代码。
+			
+		}
+		else if (guess<ret)
+		{
+			printf("您猜的数字小了！\n"); //这是一个提示作用的代码。
+			
+		}
+		else
+		{
+			printf("恭喜您，猜对了！\a\n");
+			printf("三秒后自动返回菜单！\n");
+			Sleep(3000);//延迟三秒
+			system("cls");//清屏。
+			break;//猜对之后要退出循环。
+		}
+	}
+}
+int main()
+{	
+	srand((unsigned int)time(NULL));//这是让rand可以生成随机数。
+	int input = 0;
+	do
+	{		
+		Menu();//这是一个建立的菜单函数。
+		scanf("%d", &input);//要求玩家输入选项。
+		switch (input)//由于是多分支，所以采用switch语句。
+		{
+		case 1:Game(); break;//这是玩家根据菜单的提示选择的case，运行Game函数。
+		case 0:printf("退出成功！\n");//这是玩家根据菜单的提示选择的case，break跳出了整个do…while循环。
+			break;
+		default:
+			printf("输入错误，请重新输入！\n");//这是玩家没有根据菜单的提示选择的case，直接再次进入do…while循环。
+		}
+	} while (input);
+	system("pause");
+	return 0;
+}
