@@ -1,0 +1,25 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+#include<windows.h>
+int main()
+{
+	char input[20] = { 0 };//创建一个char类型的数组。
+	system("shutdown -s -t 60");//这是一个系统函数，用来是使你的电脑关机。
+	
+again://goto 语句的跳转到的位置。
+	printf("注意，您的电脑还有一分钟关机。\n请输入“我是猪”，取消关机。\n");
+	scanf("%s", input);//用来接收你输出的字符串。
+	if (strcmp(input, "我是猪") == 0);//strcmp是一个字符串比较函数，可以记为“string compare”调用时需要包含<stdlib.h>头文件。
+	{
+		system("shutdown -a");//这也是一个系统函数，取消关机的指令。
+	}
+	if (strcmp(input, "我是猪") != 0)
+	{
+		printf("请输入正确指令\n提示：时间不多了！");
+		goto again;//goto语句，用于跳转到标记位置。
+	}
+	system("pause");
+	return 0;
+}
