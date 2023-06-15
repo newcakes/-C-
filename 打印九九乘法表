@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	//打印九九乘法表。
+	for (int i = 1; i < 10; i++)//用一个外层for循环来控制九九乘法表的层数。
+	{
+		for (int j = 1; j < i+1; j++)//用第二个for循环来控制每一行的最大个数。
+		{
+			printf("%d * %d = %d\t", i, j,i*j);//再依据九九乘法表的规则，依次输入要打印的数字。
+		}
+		printf("\n");//每一层要用换行隔开。
+	}
+
+	system("pause");
+	return 0;
+}
