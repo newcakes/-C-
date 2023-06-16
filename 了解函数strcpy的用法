@@ -1,0 +1,20 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int main()
+{
+	//strcpy库函数的用法/。
+	char arr1[] = "bit";//先定义一个字符串数组。
+	char arr2[20] = "##########";//再定义一个字符串数组。
+	strcpy(arr2, arr1);//通过strcpy函数把arr1数组的值赋值给arr2数组。
+	printf("%s\n", arr2);//打印arr2数组。
+	printf("%s\n", arr1);//打印arr1数组。
+
+	//补充：char * strcpy ( char * destination, const char * source );
+	//上面是strcpy函数的定义，该函数的第一个参数是目的位置的字符串；第二个参数是源头位置的字符串，且该参数被const修饰，意思是赋值之后源头字符串的值不变。
+	//strcpy——string copy；拷贝的内容包括'\0'。
+
+	system("pause");
+	return 0;
+}
