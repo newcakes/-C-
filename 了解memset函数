@@ -1,0 +1,23 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int main()
+{
+	//学习使用库函数memset的用法。
+	char arr[] = "Hello world!";//先建立一个字符串。
+	memset(arr, '#', 5);//使用memset函数。
+	printf("%s\n", arr);//打印arr。
+	memset(&arr[6], '$', 5);//再次使用memset函数。
+	printf("%s\n", arr);//打印arr。
+	//结果会是：
+	/*##### world!
+	  ##### $$$$$!
+	  请按任意键继续. . .*/
+	//void * memset ( void * ptr, int value, size_t num );
+	//这是memset（memory set）函数的定义，第一个参数是指要替换内容的起始位置；第二个参数是指要替换的内容；第三个参数是指要替换的个数。
+	//由于第一个参数没有被const修饰，所以替换之后原来的内容会消失。
+
+	system("pause");
+	return 0;
+}
