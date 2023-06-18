@@ -1,0 +1,23 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdlib.h>
+#include<stdio.h>
+//再不创建临时变量的前提下，写一个计算字符串大小的代码。
+int my_strlen(char* str)//自定义一个数组。
+{
+	if (*str!='\0')//递归结束条件。
+	{
+		return 1 + my_strlen(str + 1);//拆解之后的主体。
+	}
+	else
+	{
+		return 0;
+	}
+}
+int main()
+{
+	char arr[] = "absdhqwhu";//定义一个字符串数组。
+	int ret = my_strlen(arr);//定义一个变量接收返回值。
+	printf("字符串的长度为：%d\n", ret);
+	system("pause");
+	return 0;
+}
