@@ -1,0 +1,44 @@
+#include<stdlib.h>
+#include<stdio.h>
+//用二分法写一个查找有序数组对应数字的下标的代码
+int binary_search(int arr[],int k,int sz)//一个依据二分法定义的函数。
+{
+	int left = 0;//二分法数组的左下标。
+	int right = sz - 1;//二分法数组的右下标。
+	while (left<=right)//循环条件。
+	{
+		int mid = (left + right) / 2;//二分法数组的中间下标。
+		if (arr[mid] < k)//如果数组中间下标所对应的数字小于目标数字。
+		{
+			left = mid + 1;//那么把中间下标加一赋值给左下标。
+		}
+		else if (arr[mid] > k)//如果数组中间下标所对应的数字大于目标数字。
+		{
+			right = mid - 1;//那么把中间下标减一赋值给右下标。
+		}
+		else
+		{
+			return mid;//那么等于目标数字时返回mid下标。函数结束。
+		}
+	}	
+	return -1;//当不满足循环条件是，返回-1，函数结束。
+}
+
+int main()
+{
+	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };//定义一个有序数组。
+	int k = 38;//要查找的数字。
+	int sz = sizeof(arr) / sizeof(arr[0]);//数组的大小。
+	int ret = binary_search(arr, k, sz);//自定义函数的返回值。
+	//按照函数的返回值数字输入相应的结果。
+	if (-1==ret)
+	{
+		printf("找不到这个数字！\n");
+	}
+	else
+	{
+		printf("找到了，这个数的下标为：%d\n", ret);
+	}
+	system("pause");
+	return 0;
+}
