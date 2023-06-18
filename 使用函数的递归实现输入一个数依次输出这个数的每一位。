@@ -1,0 +1,20 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdlib.h>
+#include<stdio.h>
+//使用函数的递归实现输入一个数依次输出这个数的每一位。
+void print(int n)
+{
+	if (n>9)//这是一个限制函数递归的条件。
+	{
+		print(n / 10);//这是函数的递归。
+	}
+	printf("%d ", n % 10);//这是拆分后函数的主要部分。
+}
+int main()
+{
+	int input = 0;
+	scanf("%d", &input);//获取用户输入的数字。
+	print(input);//自定义一个函数实现相应的功能。
+	system("pause");
+	return 0;
+}
