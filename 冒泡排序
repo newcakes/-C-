@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<stdlib.h>
+//冒泡排序
+void bubble_sort(int arr[], int sz)
+{
+	for (int i = 0; i < sz-1; i++)//外层循环控制循环的趟数。
+	{
+		int flag = 1;//建立一个标记值。
+		for (int j = 0; j < sz-1-i; j++)//内层函数决定每一趟的交换次数。
+		{
+			if (arr[j]>arr[j+1])//如果数组中前一个数大于后一个数那么交换这两个数。
+			{
+				int temp = arr[j];//写一个简单的三行交换代码。
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+				flag = 0;//如果进行了交换说明该数组这一趟是乱序的。
+			}
+		}
+		if (flag==1)//如果某一趟该数组没有进行交换，那么说明该数组已经是顺序了。
+		{
+			break;//跳出整个循环。
+		}
+	}
+}
+int main()
+{
+	int arr[10] = { 0,2,3,1,4,7,5,9,8,6 };//建立一个乱序数组。
+	int sz = sizeof(arr) / sizeof(arr[0]);//计算出该数组的大小。
+	bubble_sort(arr, sz);//使用冒泡排序函数。
+	for (int i = 0; i < sz; i++)//一次打印排序好的数组。
+	{
+		printf("%d ", arr[i]);
+	}
+	system("pause");
+	return 0;
+}
