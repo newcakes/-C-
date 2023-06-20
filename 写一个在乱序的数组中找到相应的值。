@@ -1,0 +1,68 @@
+#include<stdio.h>
+#include<stdlib.h>
+//写一个在乱序的数组中找到相应的值。
+void bubble_sort(int arr[], int sz)//冒泡排序
+{
+	for (int i = 0; i < sz-1; i++)
+	{
+		int flag = 1;
+		for (int j = 0; j < sz-1-i; j++)
+		{
+			if (arr[j]>arr[j+1])
+			{
+				int temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+				flag = 0;
+			}
+		}
+		if (flag==1)
+		{
+			break;
+		}
+	}
+}
+int binary_search(int arr[], int k, int sz)//二分查找
+{
+	int left = 0;
+	int right = sz - 1;
+	while (left<=right)
+	{
+		int mid = (left + right) / 2;
+		if (arr[mid]<k)
+		{
+			left = mid + 1;
+		}
+		else if (arr[mid]>k)
+		{
+			right = mid - 1;
+		}
+		else
+		{
+			return mid;
+		}
+	}
+	if (left>right)
+	{
+		return -1;
+	}
+}
+
+int main()
+{
+	int k = 7;
+	int arr[] = { 1,4,6,2,8,3,7,5,9,10 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	bubble_sort(arr, sz);
+	int ret=binary_search(arr, k, sz);
+	if (ret==-1)
+	{
+		printf("在数组中找不到这个数！\n");
+	}
+	else
+	{
+		printf("找到了！这个数的下标是：%d\n", ret);
+	}
+	system("pause");
+	return 0;
+}
