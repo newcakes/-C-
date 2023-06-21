@@ -1,0 +1,223 @@
+//text.c
+#include"game.h"
+void menu()
+{
+	printf("************************\n");
+	printf("******1、开始游戏*******\n");
+	printf("******0、退出游戏*******\n");
+	printf("************************\n");
+
+}
+void game()
+{
+	system("cls");
+	int ret = 0;
+	char board[ROW][COL] = { 0 };
+	InitBoard(board, ROW, COL);
+	DisplayBoard(board, ROW, COL);
+	while (1)
+	{
+		PlayerMove(board,ROW,COL);
+		DisplayBoard(board, ROW, COL);		
+		ret = IsWin(board, ROW, COL);
+		if (ret!='c')
+		{
+			break;
+		}
+		ComputerMove(board, ROW, COL);
+		DisplayBoard(board, ROW, COL);		
+		ret = IsWin(board, ROW, COL);
+		if (ret != 'c')
+		{
+			break;
+		}
+	}
+	if (ret == '*')
+	{
+		printf("你赢了！\n");		
+		printf("三秒后返回首页！\n");
+		Sleep(3000);
+		system("cls");
+	}
+	else if (ret == '#')
+	{
+		printf("电脑赢了！\n");		
+		printf("三秒后返回首页！\n");
+		Sleep(3000);
+		system("cls");
+	}
+	else if (ret == 'o')
+	{
+		printf("平局！\n");		
+		printf("三秒后返回首页！\n");
+		Sleep(3000);
+		system("cls");
+	}
+}
+int main()
+{	
+	int input = 0;
+	do
+	{
+		srand((unsigned int)time(NULL));		
+		menu();
+		printf("请选择：>\n");
+		scanf("%d", &input);
+		switch (input)
+		{
+		case 1:
+			game();
+			break;
+		case 0:
+			printf("退出成功！\n");
+			break;
+		default:
+			printf("您输入的数字错误！请重新输入。\n");
+			break;
+		}		
+	} while (input);
+	system("pause");
+	return 0;
+}
+//game.c
+#include"game.h"
+int IsFull(char board[ROW][COL], int row, int col)
+{
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < col; j++)
+		{
+			if (board[i][j]==' ')
+			{
+				return 0;
+			}			
+		}
+	}
+	return 1;
+}
+void InitBoard(char board[ROW][COL], int row, int col)
+{
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < col; j++)
+		{
+			board[i][j] = ' ';
+		}
+	}
+}
+void DisplayBoard(char board[ROW][COL], int row, int col)
+{
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < col; j++)
+		{
+			printf(" %c ", board[i][j]);
+			if (j<col-1)
+			{
+				printf("|");
+			}
+		}
+		printf("\n");
+		if (i<row-1)
+		{
+			
+			for (int j = 0; j < col; j++)
+			{
+				printf("---");
+				if (j<col-1)
+				{
+					printf("|");
+				}
+			}
+			printf("\n");
+		}
+	}
+}
+void PlayerMove(char board[ROW][COL], int row, int col)
+{
+	printf("该你走了！\n");
+	int x = 0;
+	int y = 0;
+	printf("请输入您要下的位置：>");	
+	while (1)
+	{
+		scanf("%d %d", &x, &y);
+		if (x>=1&&x<=row||y<=col&&y>=1)
+		{
+			if (board[x-1][y-1]==' ')
+			{
+				board[x - 1][y - 1] = '*'; 
+				break;
+			}
+			else
+			{
+				printf("该位置已经被下棋了，请重新输入！\n");
+			}
+		}
+		else
+		{
+			printf("您输入的坐标错误，请重新输入！\n");
+		}
+	}
+}
+void ComputerMove(char board[ROW][COL], int row, int col)
+{
+	printf("电脑下的：\n");
+	int x = rand()%row;
+	int y = rand()%col;
+	while (1)
+	{
+		if (board[x][y] == ' ')
+		{
+			board[x][y] = '#';
+			break;
+		}
+	}
+}
+int IsWin(char board[ROW][COL], int row, int col)
+{
+	for (int i = 0; i < row; i++)
+	{
+		if (board[i][0]==board[i][1]&& board[i][1]==board[i][2]&& board[i][1]!=' ')
+		{
+			return board[i][0];
+		}		
+	}
+	for (int i = 0; i < col; i++)
+	{
+		if (board[0][i]== board[1][i]&& board[0][i]== board[2][i]&& board[0][i]!=' ')
+		{
+			return board[0][i];
+		}
+	}
+	if (board[0][0]== board[1][1]&& board[0][0]== board[2][2]&& board[0][0]!=' ')
+	{
+		return board[0][0];
+	}
+	if (board[2][0] == board[1][1] && board[2][0] == board[0][2] && board[2][0] != ' ')
+	{
+		return board[2][0];
+	}
+	if (1==IsFull(board, ROW, COL))
+	{
+		return 'o';
+	}
+	else
+	{
+		return 'c';
+	}
+}
+//game.h
+#pragma once
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdlib.h>
+#include<stdio.h>
+#include<time.h>
+#include<Windows.h>
+#define ROW 3
+#define COL 3
+void InitBoard(char board[ROW][COL], int row, int col);
+void DisplayBoard(char board[ROW][COL], int row, int col);
+void PlayerMove(char board[ROW][COL], int row, int col);
+void ComputerMove(char board[ROW][COL], int row, int col);
+int IsWin(char board[ROW][COL],int row,int col);
