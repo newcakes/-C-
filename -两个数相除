@@ -1,0 +1,9 @@
+#include<stdio.h>
+int main()
+{
+	int a = 9;
+	int b = 78;
+	int sum = b / a;
+	printf("%d", sum);
+	return 0;
+}
