@@ -1,0 +1,19 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main()
+{
+	//实现一个求一个存储在内存中二进制中1的个数。
+	int num = 0;
+	scanf("%d", &num);//手动输入一个整数。
+	int i = 0;
+	int count = 0;//建立一个记录该整数二进制中1的个数。
+	for ( i = 0; i < 32; i++)
+	{
+		if (((num >> i) & 1)==1)//让num依次右移与1做运算&，判断该数二进制中最后一位是否是1。
+		{
+			count++;//记录下二进制中1的个数。
+		}
+	}
+	printf("该整数在内存中二进制为一的个数为：%d", count);//最后打印count。
+	return 0;
+}
