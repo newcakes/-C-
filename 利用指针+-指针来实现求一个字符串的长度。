@@ -1,0 +1,19 @@
+#include<stdio.h>
+int my_strlen(char* str)
+{
+	char* start = str;//建立一个起始指针指向该数组的首地址。
+	char* end = str;//建立一个尾指针。
+	while (*end!='\0')//判断尾指针是否为'\0'。
+	{
+		end++;//尾指针在向前走一步。
+	}
+	return end - start;//返回字符长度。
+}
+int main()
+{
+	//利用指针+-指针来实现求一个字符串的长度。
+	char ch[] = "wohaoshuai";//建立一个字符串数组。
+	int len = my_strlen(ch);//建立一个返回值接收my_strlen函数的返回值。
+	printf("%d", len);//打印字符长度
+	return 0;
+}
