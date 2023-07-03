@@ -1,0 +1,22 @@
+#include<stdio.h>
+//struct——结构体关键字 stu——结构体标签 struct stu——结构体类型
+struct stu
+{
+	//成员变量
+	char name[20];
+	short age;
+	char num[20];	
+	char sex[20];
+}s1,s2,s3;//s1,s2,s3是三个全局的结构体变量。
+int main()
+{
+	//这是结构体的初始化与创建变量。
+	struct stu s = {"程邦正",19,"340826200401192632","男"};//这是局部的结构体变量。	
+	//结构体成员用操作符‘.’访问
+	printf("姓名：%s 年龄：%d 身份证号：%s 性别：%s\n", s.name, s.age, s.num, s.sex);
+	//访问结构体数组也可以采用指针的方式。
+	struct stu* ps = &s;//建立一个指针存储结构体变量s的地址。
+	//结构体成员就可以用操作符'->'的方式来访问。
+	printf("姓名：%s 年龄：%d 身份证号：%s 性别：%s\n", ps->name, ps->age, ps->num, ps->sex);
+	return 0;
+}
