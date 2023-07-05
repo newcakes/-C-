@@ -1,0 +1,22 @@
+#include<stdio.h>
+#define N 3
+//自己写一个拷贝字符串的自定义函数。（该函数的源头字符串数组大小要小于目的字符串数组大小！）
+void my_strcpy(char* dest, char* src,int sz)
+{
+	for (int i = 0; i <=sz+1; i++)
+	{		
+		dest[i] = src[i];//依次交换数组元素
+		if (src[i] == '\0')
+		{
+			break;//如果源头字符串元素为'\0'，就跳出循环。
+		}
+	}
+}
+int main()
+{
+	char arr1[] = "###########";
+	char arr2[] = "cbz";
+	int sz = sizeof(arr2);//计算出源头字符串数组大小。
+	my_strcpy(arr1, arr2,sz);//调用函数
+	printf("%s\n", arr1);//打印目的字符串
+}
