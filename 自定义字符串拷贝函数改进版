@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<assert.h>
+#define N 3
+//自定义字符串拷贝函数改进版
+char* my_strcpy(char* dest,const char* src)
+{
+	assert(dest != NULL);
+	assert(src != NULL);
+	char* ret = dest;
+	while (*dest++ = *src++)
+	{
+		;
+	}	
+	return ret;
+}
+int main()
+{
+	char arr1[] = "############";
+	char arr2[] = "cbz";
+	my_strcpy(arr1, arr2);
+	printf("%s\n",arr1);
+	printf("%s\n", my_strcpy(arr1, arr2));//链式访问。
+	return 0;
+}
