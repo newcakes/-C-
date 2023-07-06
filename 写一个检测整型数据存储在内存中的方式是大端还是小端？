@@ -1,0 +1,21 @@
+#include<stdio.h>
+int check_sys()
+{
+	int a = 1;
+	char* pa = &a;
+	return *pa;
+}
+int main()
+{
+	//写一个检测整型数据存储在内存中的方式是大端还是小端？
+	int ret = check_sys();	
+	if (ret==1)
+	{
+		printf("该系统采用小端存储！");//小端：小数据放在低地址，大数据放在高地址。
+	}
+	else
+	{
+		printf("该系统采用大端存储！");//大端：小数据放在高地址，大数据放在低地址
+	}
+	return 0;
+}
