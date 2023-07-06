@@ -1,0 +1,17 @@
+#include<stdio.h>
+//函数指针
+int Add(int x, int y)
+{
+	int z = 0;
+	z = x + y;
+	return z;
+}
+int main()
+{
+	int a = 10;
+	int b = 20;
+	int (*pa)(int, int) = Add;//由于(比*的运算级别高，(*pa)才是指针，类型是int (int,int)。
+	printf("%d\n", (*pa)(3, 5));//(*pa)表示Add。
+	printf("%d\n", pa(3, 5));//pa相当于Add，直接调用函数。
+	return 0;
+}
