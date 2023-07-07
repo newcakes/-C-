@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<stdlib.h>
+//学习使用库函数qsort
+int cmp(const void* e1,const void* e2)
+{
+	if (*(float*)e1 == *(float*)e2)
+	{
+		return 0;
+	}
+	else if (*(float*)e1 > *(float*)e2)
+	{
+		return 1;
+	}
+	else
+	{
+		return -1;
+	}
+}
+int main()
+{
+	float f[] = { 6.2,7.7,3.5,8.1,9.9 };
+	int sz = sizeof(f) / sizeof(f[0]);
+	//void qsort (void* base, size_t num, size_t size,
+	//int (*compar)(const void*, const void*));
+	qsort(f, sz, sizeof(f[0]), cmp);
+	for (int i = 0; i < sz; i++)
+	{
+		printf("%f ", f[i]);
+	}
+	return 0;
+}
