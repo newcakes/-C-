@@ -1,0 +1,58 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+//写一个可以比较任意类型的冒泡排序
+struct stu
+{
+	char mane[20];
+	int age;
+};
+void print(struct stu s[], int sz)
+{
+	for (int i = 0; i < sz; i++)//打印
+	{
+		printf("%s\ ", s[i].mane);
+		printf("%d\n",s[i].age);		
+	}
+}
+void swap(char* buf1, char* buf2,int width)
+{
+	for (int i = 0; i < width; i++)//依次访问一个字节，交换数组中的一对元素。
+	{
+		char temp = *buf1;
+		*buf1 = *buf2;
+		*buf2 = temp;
+		buf1++;
+		buf2++;
+	}	
+}
+int cmp(void* e1,void* e2)
+{
+	return strcmp((char*)e1, (char*)e2);
+}
+bubblesort(void* base, int sz, int width,int (*cmp)(void*e1,void*e2) )
+{
+	//冒泡排序两层for循环。
+	for (int i = 0; i < sz-1; i++)
+	{
+		for (int j = 0; j < sz-1-i; j++)
+		{
+			if (cmp((char*)base+j*width,(char*)base+(j+1)*width)>0)//把base强制转换为char*，再利用width依次访问下一对元素
+			{
+				swap((char*)base + j * width, (char*)base + (j + 1) * width, width);//调用交换函数。
+			}
+		}
+	}
+}
+void text()
+{
+	struct stu s[] = {{"zhangsan",25},{"lisi",65},{"wangwu",32}};//建立一个结构体数组。
+	int sz = sizeof(s) / sizeof(s[0]);//计算该数组元素个数。
+	bubblesort(s, sz, sizeof(s[0]), cmp);//调用bubblesort函数。
+	print(s, sz);//调用打印函数。
+}
+int main()
+{
+	text();//调用text函数。
+	return 0;
+}
