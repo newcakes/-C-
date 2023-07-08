@@ -1,0 +1,24 @@
+#include<stdio.h>
+//颠倒一个字符串的循序。
+void change(char* arr,int len)
+{
+	int right = 0;
+	int left = len - 1;
+	while (right<=left)
+	{
+		char temp = *(arr + right);
+		*(arr + right) = *(arr + left);
+		*(arr + left) = temp;
+		right++;
+		left--;
+	}
+}
+int main()
+{
+	char arr[] = "abcdefg";
+	int len = strlen(arr);
+	change(arr,len);
+	printf("%s\n", arr);
+
+	return 0;
+}
