@@ -1,0 +1,22 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#define N 5
+//计算求和
+//sum=a+a*a+a*a*a+a*a*a*a+……
+int main()
+{
+	int input = 0;
+	int sum = 0;
+	scanf("%d", &input);
+	for (int i = 0; i < N; i++)
+	{
+		int mul = 1;
+		for (int j = 0; j < i+1; j++)
+		{
+			mul *= input;
+		}
+		sum += mul;
+	}
+	printf("%d\n", sum);
+	return 0;
+}
