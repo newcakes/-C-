@@ -1,0 +1,16 @@
+#include<stdio.h>
+int main()
+{
+	//试题
+	int arr[2][5] = { 1,2,3,4,5,6,7,8,9,10 };
+	int* ptr1 = (int*)(&arr + 1);
+	int* ptr2 = (int*)(*(arr + 1));//*(arr + 1)相当于arr[1]
+	printf("%d %d\n", *(ptr1 - 1), *(ptr2 - 1));//10 5
+	
+	//试题
+	char* a[] = { "work","at","alibaba" };//a数组存储三个指向常量字符串的首字母的地址的指针
+	char** pa = a;//用二级指针存储a数组的元素的首地址，即该数组第一个常量字符串的首字母的地址
+	pa++;//pa++表示跳过一个char*变量的地址，指向下一个，即指向“a”的地址。
+	printf("%s\n", *pa);//“%s”表示打印字符串。
+	return 0;
+}
