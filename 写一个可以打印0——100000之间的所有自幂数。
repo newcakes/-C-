@@ -1,0 +1,36 @@
+#include<stdio.h>
+//写一个可以打印0——100000之间的所有自幂数。
+int main()
+{	
+	for (int i = 1; i < 100000; i++)
+	{
+		int count = 1;
+		int arr[6] = { 0 };
+		int arr2[6] = { 1,1,1,1,1,1 };
+		int sum = 0;
+		int ret = i;
+		for (int j = 0; j < 5 ; j++)
+		{
+			arr[j] = ret % 10;
+			if (ret/10==0&&ret<10)
+			{
+				break;
+			}			
+			ret /= 10;
+			count++;
+		}
+		for (int k = 0; k < count; k++)
+		{
+			for (int l = 0; l < count; l++)
+			{
+				arr2[k] *= arr[k];
+			}
+			sum += arr2[k];
+		}
+		if (i==sum)
+		{
+			printf("%d ", i);
+		}
+	}
+	return 0;
+}
