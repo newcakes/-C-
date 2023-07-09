@@ -1,0 +1,45 @@
+#include<stdio.h>
+//打印菱形的图案
+int main()
+{
+	char arr[] = "             ";
+	int len = strlen(arr);
+	int right = 0;
+	int left = 0;
+	int mid = 6;
+	left = mid;
+	right = mid;
+	for (int i = 0; i < len; i++)
+	{		
+		if (right>=0)
+		{
+			arr[left] = '*';
+			arr[right] = '*';
+			printf("%s\n", arr);
+		}
+		else
+		{
+			break;
+		}
+		right--;
+		left++;
+	}
+	right++;
+	left--;
+	for (int i = 0; i < len; i++)
+	{		
+		if (right<left)
+		{
+			arr[right] = ' ';
+			arr[left] = ' ';			
+		}
+		if (right>=left)
+		{
+			break;
+		}
+		right++;
+		left--;
+		printf("%s\n", arr);
+	}
+	return 0;
+}
