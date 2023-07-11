@@ -1,0 +1,40 @@
+#include<stdio.h>
+//找一个数字是否是杨氏矩阵的数字
+int Findnum(int arr[][3], int k, int row, int col)
+{
+	int x = 0;
+	int y = col - 1;
+	while (x<=row-1&&y>=0)
+	{		
+		if (arr[x][y]>k)
+		{
+			y--;
+		}
+		else if (arr[x][y]<k)
+		{
+			x++;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+int main()
+{
+	int arr[][3] = { {1,2,3},{4,5,6},{7,8,9} };
+	int row = sizeof(arr) / sizeof(arr[0]);
+	int col = sizeof(arr[0]) / sizeof(arr[0][0]);
+	int k = 7;
+	int ret = Findnum(arr,k,row,col);
+	if (ret==1)
+	{
+		printf("找到了！\n");
+	}
+	else
+	{
+		printf("找不到！\n");
+	}
+	return 0;
+}
