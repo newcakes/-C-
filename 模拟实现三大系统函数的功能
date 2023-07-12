@@ -1,0 +1,60 @@
+#include<stdio.h>
+#include<assert.h>
+//my_strcat函数
+char* my_strcat(char* str1,const char* str2)
+{
+	char* ret = str1;
+	while (*str1!='\0')
+	{
+		str1++;
+	}
+	while (*str1++ = *str2++)
+	{
+		;
+	}
+	return ret;
+}
+int main()
+{
+	char arr1[30] = "come on";
+	char arr2[] = "cbz";	
+	printf("%s", my_strcat(arr1, arr2));
+	return 0;
+}
+//my_strcpy函数
+char* my_strcpy(char* str1, const char* str2)
+{
+	assert(str1 != NULL);
+	assert(str2 != NULL);
+	char* ret = str1;
+	while (*str1++ = *str2++)
+	{
+		;
+	}
+	return ret;
+}
+int main()
+{
+	char arr1[] = "abcdef";
+	char arr2[] = "cbz";	
+	printf("%s\n", my_strcpy(arr1, arr2));
+	return 0;
+}
+//my_strlen函数
+int my_strlen(char* str)
+{
+	int count = 0;
+	assert(str != NULL);
+	while (*str!='\0')
+	{
+		count++;
+		str++;
+	}
+	return count;
+}
+int main()
+{
+	char arr[] = "abcdef";
+	printf("%d\n", my_strlen(arr));
+	return 0;
+}
