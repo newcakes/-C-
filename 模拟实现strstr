@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<assert.h>
+//模拟实现strstr
+char* my_strstr(const char* str1, const char* str2)
+{
+	assert(str1 && str2);
+	char* temp = str2;
+	char* ret = str1;
+	int count = 0;
+	while (*temp!='\0'&&*str1!='\0')
+	{
+		if (*temp!=*str1)
+		{
+			str1++;
+			temp = str2;
+			count = 0;
+		}
+		else
+		{
+			if (count==0)
+			{
+				ret = str1;
+			}
+			str1++;
+			temp++;
+			count++;
+		}
+	}
+	if (*temp=='\0')
+	{
+		return ret;
+	}
+	else
+	{
+		return NULL;
+	}
+}
+int main()
+{
+	char* p1 = "abcdefg";
+	char* p2 = "cbz";
+	char* ret = my_strstr(p1, p2);
+	if (ret==NULL)
+	{
+		printf("字串不存在！(The substring is not exist!)");
+	}
+	else
+	{
+		printf("%s\n", ret);
+	}
+	return 0;
+}
