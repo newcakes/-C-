@@ -1,0 +1,15 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+//strtok函数的使用
+int main()
+{
+	char arr1[] = "cbz723223489@CBZ.163.com";	
+	char* ret = strtok(arr1, "@.");
+	while (ret!=NULL)
+	{
+		printf("%s\n", ret);
+		ret = strtok(NULL, "@.");
+	}
+	return 0;
+}
