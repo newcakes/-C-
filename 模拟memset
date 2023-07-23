@@ -1,0 +1,18 @@
+#include<stdio.h>
+void* my_memset(void* prt, int value, int num)
+{
+	void* ret = prt;
+	while (num--)
+	{
+		*(char*)prt = value;
+		((char*)prt)++;
+	}
+	return ret;
+}
+int main()
+{
+	char arr[] = "********";
+	char* ret = (char*)my_memset(arr, '#', 3);	
+	printf("%s\n", ret);
+	return 0;
+}
