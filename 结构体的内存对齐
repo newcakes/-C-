@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<stddef.h>
+//结构体的内存对齐
+#pragma pack(4)
+struct text
+{
+	char a;
+	char b;	
+	double c;
+	int d;
+	double e;
+};
+int main()
+{
+	struct text q;
+	printf("%d\n", sizeof(q));//24
+	//offsetof (type,member)
+	printf("%d\n", offsetof(struct text, c));//4
+	return 0;
+}
