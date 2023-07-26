@@ -1,0 +1,32 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<errno.h>
+#include<string.h>
+int main()
+{
+	int* p =(int*) calloc(10, sizeof(int));//开辟了40个字节的空间，且初始化为0。
+	int* ptr = (int*)realloc(p, 10 * sizeof(int));//重新追加40个字节的空间,但重新追加的空间没有初始化。
+	if (ptr==NULL)//如果追加空间失败，会返回空指针，所以不能用原来的指针接收。
+	{
+		printf("%s\n", strerror(errno));
+	}
+	else
+	{
+		p = ptr;
+		for (int i = 10; i < 20; i++)
+		{
+			*(p + i) = 0;
+		}
+		for (int i = 0; i < 20; i++)
+		{
+			printf("%d ", *(p + i));
+		}
+		free(ptr);
+		ptr == NULL;
+	}
+	//realloc返回的新指针会有两种情况：1、如果追加的空间不是很大，会返回原来的指针。2、如果追加的空间很大，会重新开辟一块内存空间，把原来的数据拷贝到新开辟的空间中，释放旧空间并返回新开辟空间的指针。
+	free(p);
+	p = NULL;
+	return 0;
+}
