@@ -1,0 +1,61 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<errno.h>
+#include<string.h>
+//用指针代替柔性数组
+struct text
+{
+	int a;
+	int* p;
+};
+int main()
+{
+	struct text t;
+	struct text* pt = (struct text*)malloc(sizeof(t));//开辟一个动态的struct text*类型的内存
+	if (pt!=NULL)//判断
+	{
+		pt->p = (int*)malloc(10 * sizeof(int));//再开辟一个10个int类型的内存。
+		if (pt->p != NULL)//判断
+		{
+			for (int i = 0; i < 10; i++)
+			{
+				pt->p[i] = i;
+			}
+			for (int i = 0; i < 10; i++)
+			{
+				printf("%d ", pt->p[i]);
+			}
+		}
+		free(pt->p);//释放内存
+		pt->p = NULL;
+		free(pt);
+		pt = NULL;
+	}
+	return 0;
+}
+//柔性数组
+struct text
+{
+	int a;
+	int arr[];//未定义大小，柔性数组的标志。
+};
+int main()
+{
+	struct text t;
+	struct text* pt = (struct text*)malloc(sizeof(t) + 10 * sizeof(int));
+	if (pt!=NULL)//判断
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			pt->arr[i] = i;
+		}
+		for (int i = 0; i < 10; i++)
+		{
+			printf("%d ", pt->arr[i]);
+		}
+	}
+	free(pt);//释放。
+	pt = NULL;
+	return 0;
+}
