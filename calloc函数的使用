@@ -1,0 +1,24 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<errno.h>
+#include<string.h>
+int main()
+{
+	//void* calloc (size_t num, size_t size);
+	int* p = (int*)calloc(10, sizeof(int));//申请一块初始化为0的内存。
+	if (p==NULL)
+	{
+		printf("%s\n", strerror(errno));
+	}
+	else
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			printf("%d ", *(p + i));
+		}
+	}
+	free(p);
+	p = NULL;
+	return 0;
+}
