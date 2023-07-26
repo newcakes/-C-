@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<errno.h>
+#include<string.h>
+int main()
+{
+	//void* malloc (size_t size);
+	//申请内存malloc
+	int* p = (int*)malloc(10 * sizeof(int));//int* p = (int*)malloc(SIZE_MAX);//Not enough space
+	if (p==NULL)
+	{
+		printf("%s\n", strerror(errno));//打印错误信息
+	}
+	else
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			*(p + i) = i;
+		}
+		for (int i = 0; i < 10; i++)
+		{
+			printf("%d ", *(p + i));
+		}
+	}
+	free(p);//释放空间，此时，p的地址没变。
+	p = NULL;
+	return 0;
+}
