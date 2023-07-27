@@ -1,0 +1,26 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<errno.h>
+#include<string.h>
+struct text
+{	
+	int a;
+	float f;
+	char str[10];	
+};
+int main()
+{
+	int A;
+	float F;
+	char STR[10];
+	FILE* pf = fopen("text.txt", "w+");
+	struct text t = { 100,3.14f,"qqqqqq" };
+	fprintf(pf, "%d %f %s\n", t.a, t.f, t.str);//在pf指向的文件中打印各种格式数据
+	rewind(pf);
+	fscanf(pf, "%d %f %s\n", &A, &F, STR);//从文件中接收各种类型的数据
+	fprintf(stdout, "%d %f %s\n", A, F, STR);//在标准输出（屏幕）上输出各种类型的数据
+	fclose(pf);
+	pf = NULL;	
+	return 0;
+}
