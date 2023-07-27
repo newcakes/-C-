@@ -1,0 +1,23 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<errno.h>
+#include<string.h>
+int main()
+{
+	char arr[100];
+	FILE* pfw = fopen("text.txt", "w");//以读的形式打开text.txt文件。	
+	if (pfw==NULL)//如果打不开，输出错误理由
+	{
+		printf("%s\n", strerror(errno));
+		return 0;
+	}
+	fputs("open successfully",pfw);
+	fclose(pfw);//关闭文件。
+	pfw = NULL;
+	FILE* pfr = fopen("text.txt", "r");
+	printf("%s\n", fgets(arr, 18, pfr));	
+	fclose(pfr);
+	pfr = NULL;
+	return 0;
+}
