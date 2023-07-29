@@ -1,0 +1,10 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main()
+{
+	char arr[20] = { 0 };
+	fprintf(stdout, "what is your name?\n");
+	fscanf(stdin, "%s", arr);
+	fprintf(stdout, "hello %s\n", arr);
+	return 0;
+}
