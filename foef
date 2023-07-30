@@ -1,0 +1,30 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main()
+{
+	FILE* pf = fopen("test.txt", "w+");
+	if (pf==NULL)
+	{
+		perror("open test.txt");
+		return 0;
+	}
+	int ch = 0;
+	fputs("cbz", pf);
+	rewind(pf);
+	while ((ch = fgetc(pf)) != EOF)
+	{
+		putchar(ch);
+	}
+	printf("\n");
+	if (ferror(pf))
+	{
+		printf("error\n");
+	}
+	else if (feof(pf))
+	{
+		printf("end of file\n");
+	}
+	fclose(pf);
+	pf == NULL;
+	return 0;
+}
