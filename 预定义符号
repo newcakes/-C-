@@ -1,0 +1,25 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+//预定义符号
+int main()
+{
+	fprintf(stdout, "%s\n", __FILE__);
+	fprintf(stdout, "%d\n", __LINE__);
+	fprintf(stdout, "%s\n", __TIME__);
+	fprintf(stdout, "%s\n", __DATE__);
+	//建立一个日志文件
+	FILE* pf = fopen("log.txt", "w");
+	int arr[10] = { 0 };
+	for (int i = 0; i < 10; i++)
+	{
+		arr[i] = i;
+		fprintf(pf, "file:%s date:%s time:%s line:%d i=%d\n", __FILE__, __DATE__, __TIME__, __LINE__, i);
+	}
+	fclose(pf);
+	pf = NULL;
+	for (int i = 0; i < 10; i++)
+	{
+		fprintf(stdout, "%d ", arr[i]);
+	}
+	return 0;
+}
